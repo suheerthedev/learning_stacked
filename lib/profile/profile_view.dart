@@ -10,7 +10,15 @@ class ProfileView extends StatelessWidget {
     return ViewModelBuilder.reactive(
         viewModelBuilder: () => ProfileViewModel(),
         builder: (context, viewModel, child) {
-          return const Scaffold();
+          return Scaffold(
+            body: Column(
+              children: [
+                const Text("Counter Value"),
+                ElevatedButton(
+                    onPressed: () {}, child: const Text("Increase Counter")),
+              ],
+            ),
+          );
         });
   }
 }
