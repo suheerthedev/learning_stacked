@@ -10,13 +10,26 @@ class ProfileView extends StatelessWidget {
     return ViewModelBuilder.reactive(
         viewModelBuilder: () => ProfileViewModel(),
         builder: (context, viewModel, child) {
-          return Scaffold(
-            body: Column(
-              children: [
-                const Text("Counter Value"),
-                ElevatedButton(
-                    onPressed: () {}, child: const Text("Increase Counter")),
-              ],
+          return SafeArea(
+            child: Scaffold(
+              appBar: AppBar(title: const Text("Profile View")),
+              body: Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Text(
+                      "${viewModel.counter}",
+                      style: const TextStyle(
+                          fontSize: 24, fontWeight: FontWeight.bold),
+                    ),
+                    ElevatedButton(
+                        onPressed: () {
+                          viewModel.increaseCounter();
+                        },
+                        child: const Text("Increase Counter")),
+                  ],
+                ),
+              ),
             ),
           );
         });
