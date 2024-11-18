@@ -18,13 +18,13 @@ class ProfileView extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Text(
-                      "${viewModel.counter}",
+                      "${viewModel.counterService.counter}",
                       style: const TextStyle(
                           fontSize: 24, fontWeight: FontWeight.bold),
                     ),
                     ElevatedButton(
                         onPressed: () {
-                          viewModel.increaseCounter();
+                          viewModel.addValue();
                         },
                         child: const Text("Increase Counter")),
                   ],

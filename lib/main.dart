@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:learning_stacked/home/home_view.dart';
+import 'package:learning_stacked/app/app.locator.dart';
+import 'package:learning_stacked/app/app.router.dart';
+import 'package:stacked_services/stacked_services.dart';
 
-void main() {
+void main() async {
+  await setupLocator();
   runApp(const MyApp());
 }
 
@@ -10,9 +13,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomeView(),
+      navigatorKey: StackedService.navigatorKey,
+      onGenerateRoute: StackedRouter().onGenerateRoute,
     );
   }
 }

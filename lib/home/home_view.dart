@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:learning_stacked/home/home_viewmodel.dart';
-import 'package:learning_stacked/profile/profile_view.dart';
 import 'package:stacked/stacked.dart';
 
 class HomeView extends StatelessWidget {
@@ -19,19 +18,19 @@ class HomeView extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Text(
-                      "${viewModel.counter}",
+                      "${viewModel.counterService.counter}",
                       style: const TextStyle(
                           fontSize: 24, fontWeight: FontWeight.bold),
                     ),
                     ElevatedButton(
                         onPressed: () {
-                          viewModel.increaseCounter();
+                          viewModel.addValue();
                         },
                         child: const Text("Increase Counter")),
                     ElevatedButton(
-                        onPressed: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => const ProfileView()));
+                        onPressed: () async {
+                          await viewModel.navigateToProfile();
+                          viewModel.rebuildUi();
                         },
                         child: const Text("Navigate to Profile"))
                   ],
